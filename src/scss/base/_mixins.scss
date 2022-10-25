@@ -27,5 +27,11 @@
     }
 }
 
+@mixin grid ($columns, $espaciado){
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $espaciado;
+}
+
 
 
