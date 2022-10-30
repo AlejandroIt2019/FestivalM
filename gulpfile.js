@@ -1,6 +1,7 @@
 const { src, dest, watch, parallel} = require("gulp");
 
 //css
+
 const sass = require("gulp-sass")(require('sass'));
 const plumber = require('gulp-plumber');
 
@@ -9,6 +10,7 @@ const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const cache = require("gulp-cache");
+const avif = require('gulp-avif');
 
 function css(done) {
     
@@ -43,6 +45,20 @@ function versionWebp(done){
         .pipe( dest('build/img'))
     done();
 }
+
+function formatoavif(done){
+
+    const opciones = {
+        quality: 50
+    };
+
+    src('src/img//**/*.{png,jpg}')
+        .pipe( avif(opciones))
+        .pipe( dest('build/img'))
+    done();
+}
+
+
 //se necesita conector de sass, plugins "gulp-sass"
 //llamar siempre el node.
 
@@ -54,5 +70,6 @@ function dev(done) {
 }
 exports.css = css;
 exports.imagenes = imagenes;
+exports.formatoavif = formatoavif;
 exports.versionWebp = versionWebp;
-exports.dev = parallel(imagenes, versionWebp, dev);
+exports.dev = parallel(imagenes, versionWebp, formatoavif, dev);
