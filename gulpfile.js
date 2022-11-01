@@ -58,13 +58,21 @@ function formatoavif(done){
     done();
 }
 
+function javascript(done) {
+    src('src/js/**/*.js')
+        .pipe(dest('build/js'));
+
+    done();
+}
 
 //se necesita conector de sass, plugins "gulp-sass"
 //llamar siempre el node.
 
 function dev(done) {
-    
+
     watch('src/scss/**/*.scss', css);
+    watch('src/scss/**/*.js', javascript);
+
     
     done();
 }
@@ -72,4 +80,5 @@ exports.css = css;
 exports.imagenes = imagenes;
 exports.formatoavif = formatoavif;
 exports.versionWebp = versionWebp;
-exports.dev = parallel(imagenes, versionWebp, formatoavif, dev);
+exports.js = javascript;
+exports.dev = parallel(imagenes, versionWebp, formatoavif, javascript, dev);
