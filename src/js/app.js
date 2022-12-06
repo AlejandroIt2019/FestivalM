@@ -12,6 +12,7 @@ function iniciarApp() {
 function navegacionFija() {
     const barra = document.querySelector('.header');
     const sobreFestival = document.querySelector('.sobre-festival');
+    const body = document.querySelector('body');
 
     window.addEventListener('scroll', function() {
        
@@ -35,9 +36,9 @@ function scrollNav() {
             
             const seccionScroll = e.target.attributes.href.value;
             const seccion = document.querySelector(seccionScroll);
-            seccion.scrollIntoView({ behavior: 'smooth'});
+            seccion.scrollIntoView({ behavior: "smooth"});
         });
-    })
+    });
 
 }
 
@@ -78,7 +79,7 @@ function mostrarImagen(id){
         overlay.classList.add('overlay');
         overlay.onclick = function (){
             const body = document.querySelector('body');
-            body.appendChild(overlay)
+            body.classList.remove('fijar-body');
             
             overlay.remove();
         }
@@ -89,13 +90,11 @@ function mostrarImagen(id){
         cerrarModal.classList.add('btn-cerrar');
         cerrarModal.onclick = function () {
             const body = document.querySelector('body');
-            body.appendChild(overlay)
+            body.classList.remove('fijar-body');
             
             overlay.remove();
         }
         overlay.appendChild(cerrarModal);
-
-
 
         //añadirlo al html
         const body = document.querySelector('body');

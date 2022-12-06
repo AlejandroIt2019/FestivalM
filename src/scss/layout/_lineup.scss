@@ -1,8 +1,6 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-
-
 .lineup {
     background-color: v.$rosa;
     padding: 5rem 0;
@@ -25,12 +23,11 @@
     p {
         color: v.$negro;
     }
-    
 }
+
 .escenario {
     padding-top: 2rem;
-
-    p {
+    .nombre-escenario {
         &:after {
             content: '';
             display: block;
@@ -43,40 +40,33 @@
         }
     }
 }
-
-.rock .nombre-escenario:after {
-    background-image: url(../img/icono_rock.png);
-}
 .edm .nombre-escenario:after {
     background-image: url(../img/icono_edm.png);
+}
+.rock .nombre-escenario:after {
+    background-image: url(../../img/icono_rock.png);
 }
 
 .calendario {
     @include m.resetear-lista;
-
-        li {
-            padding: 2.5rem;
-            font-weight: 700;
-            span{
-                font-weight: 400;
-            }
+    li {
+        padding: 2.5rem;
+        font-weight: 700;
+        span {
+            font-weight: 400;
         }
-    
+    }
 }
 
 .bg-amarillo {
     background-color: v.$amarillo;
-
-    li:nth-child(odd){
-        background-color: darken(v.$amarillo, 10%);
+    li:nth-child(odd) {
+        background-color: darken(v.$amarillo, 15%);
     }
 }
 .bg-verde {
     background-color: v.$verde;
-
-    li:nth-child(odd){
+    li:nth-child(odd) {
         background-color: darken(v.$verde, 10%);
     }
 }
-
-
